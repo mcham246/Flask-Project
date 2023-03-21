@@ -6,6 +6,7 @@ class DataScraper():
     def __init__(self):
         self.names = []
         self.position = []
+        self.team = []
         self.df = pd.DataFrame()
 
     def getOffensiveLeadersStats(self):
@@ -21,8 +22,18 @@ class DataScraper():
                 name = (td.find(text=True))
                 if name not in self.names:
                     self.names.append(name)
-        # stored in 'names' list
-    
+        # stored in 'self.names' list
+
+        # Find the team the corresponding player plays for
+        soup.find("tbody")
+        p = soup.find_all('td')
+        for tr in p:
+            # print(tr.text)
+            for name in self.names:
+                if name in tr.text:
+                    self.team.append(tr.text[len(name):])
+        # stored in 'self.team'
+
         # Finding the player position
         soup.find("tbody")
         p = soup.find_all('div', class_='position')
@@ -39,13 +50,13 @@ class DataScraper():
         for tr in p:
             if 'position' not in str(tr) and 'AnchorLink' not in str(tr):
                 if i >= 50:
-                    print(tr)
+                    # print(tr)
                     j += 1
                     stats.append(tr.text)
                 if j == 19:
                     # print(stats)
                     print(self.createDict(stats))
-                    print('---------------------------------------')
+                    # print('---------------------------------------')
                     stats = []
                     j = 0
                 i += 1
@@ -54,6 +65,7 @@ class DataScraper():
     def createDict(self, stats):
         dict = {}
         dict[self.names.pop(0)] = {
+            'TEAM': self.team.pop(0),
             'POS': self.position.pop(0),
             'GP': stats[0],
             'MIN': stats[1],
