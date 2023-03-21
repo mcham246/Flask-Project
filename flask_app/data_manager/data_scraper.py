@@ -55,7 +55,7 @@ class DataScraper():
                     stats.append(tr.text)
                 if j == 19:
                     # print(stats)
-                    print(self.createDict(stats))
+                    # print(self.createDict(stats))
                     # print('---------------------------------------')
                     stats = []
                     j = 0
