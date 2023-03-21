@@ -1,11 +1,15 @@
 import requests
 from bs4 import BeautifulSoup as bs
-dict = {}
+import pandas as pd
 
-  
 class DataScraper():
+    def __init__(self):
+        self.names = []
+        self.position = []
+        self.df = pd.DataFrame()
 
-    def getOffensiveLeadersStats():
+    def getOffensiveLeadersStats(self):
+        # Finding the player names
         URL = "https://www.espn.com/nba/stats/player"
         r = requests.get(url = URL)
         soup = bs(r.text, "html.parser")
@@ -15,17 +19,64 @@ class DataScraper():
         for td in p:
             if "data-player-uid" in str(td):
                 name = (td.find(text=True))
-                if name not in dict:
-                    dict[name] = {
-                        'PTS': 0,
-                        'REB': 1
-                    }
+                if name not in self.names:
+                    self.names.append(name)
+        # stored in 'names' list
     
+        # Finding the player position
+        soup.find("tbody")
+        p = soup.find_all('div', class_='position')
+        for tr in p:
+            self.position.append(tr.text)
+        # stored in "team" list
+
+        # Finding the stats for the corresponding player
         soup.find("tbody")
         p = soup.find_all('td', class_='Table__TD')
+        i = 0
+        j = 0
+        stats = []
         for tr in p:
-            print(tr.text)
+            if 'position' not in str(tr) and 'AnchorLink' not in str(tr):
+                if i >= 50:
+                    print(tr)
+                    j += 1
+                    stats.append(tr.text)
+                if j == 19:
+                    # print(stats)
+                    print(self.createDict(stats))
+                    print('---------------------------------------')
+                    stats = []
+                    j = 0
+                i += 1
 
+    # utility method for finding player stats
+    def createDict(self, stats):
+        dict = {}
+        dict[self.names.pop(0)] = {
+            'POS': self.position.pop(0),
+            'GP': stats[0],
+            'MIN': stats[1],
+            'PTS': stats[2],
+            'FGM': stats[3],
+            'FGA': stats[4],
+            'FG%': stats[5],
+            '3PM': stats[6],
+            '3PA': stats[7],
+            '3P%': stats[8],
+            'FTM': stats[9],
+            'FTA': stats[10],
+            'FT%': stats[11],
+            'REB': stats[12],
+            'AST': stats[13],
+            'STL': stats[14],
+            'BLK': stats[15],
+            'TO': stats[16],
+            'DD2': stats[17],
+            'TD3': stats[18]
+        }
+        return dict
+    
 if __name__ == "__main__":
-    object = DataScraper
+    object = DataScraper()
     object.getOffensiveLeadersStats()
