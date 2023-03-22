@@ -2,14 +2,17 @@ import requests
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 
+
 class DataScraper():
     def __init__(self):
         self.names = []
         self.position = []
         self.team = []
-        self.df = pd.DataFrame()
+        self.df = pd.DataFrame(columns=['PLAYER', 'TEAM', 'POS', 'GP', 'MIN', 'PTS', 'FGM', 'FGA', 'FG%', 
+                                   '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'REB', 'AST',
+                                   'STL', 'BLK', 'TO', 'DD2', 'TD3'])        
 
-    def getOffensiveLeadersStats(self):
+    def setOffensiveLeadersStats(self):
         # Finding the player names
         URL = "https://www.espn.com/nba/stats/player"
         r = requests.get(url = URL)
@@ -55,11 +58,21 @@ class DataScraper():
                     stats.append(tr.text)
                 if j == 19:
                     # print(stats)
-                    # print(self.createDict(stats))
+                    # self.createDict(stats)
                     # print('---------------------------------------')
+                    self.createDataFrame(stats)
                     stats = []
                     j = 0
                 i += 1
+    
+    def getOffensiveLeadersStats(self):
+        self.setOffensiveLeadersStats()
+        print(self.df)
+        return self.df
+
+    # Save the dataframe to a csv file
+    def save(self):
+        self.df.to_csv(r'/Users/matarrcham/Documents/Flask-Project/data/test.csv', index=False)
 
     # utility method for finding player stats
     def createDict(self, stats):
@@ -88,6 +101,12 @@ class DataScraper():
             'TD3': stats[18]
         }
         return dict
+
+    def createDataFrame(self, stats):
+        stats.insert(0, self.position.pop(0))
+        stats.insert(0, self.team.pop(0))
+        stats.insert(0, self.names.pop(0))
+        self.df.loc[len(self.df)] = stats
     
 if __name__ == "__main__":
     object = DataScraper()
