@@ -15,7 +15,8 @@ class DataScraper():
     def setOffensiveLeadersStats(self):
         # Finding the player names
         URL = "https://www.espn.com/nba/stats/player"
-        r = requests.get(url = URL)
+        URL2 = 'https://www.espn.com/nba/stats/player/_/table/general/sort/avgRebounds/dir/desc'
+        r = requests.get(url = URL2)
         soup = bs(r.text, "html.parser")
         soup.prettify()
         p = soup.find('tbody')
