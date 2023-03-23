@@ -15,7 +15,7 @@ class DataScraper():
     def setOffensiveLeadersStats(self):
         # Finding the player names
         URL = "https://www.espn.com/nba/stats/player"
-        URL2 = 'https://www.espn.com/nba/stats/player/_/table/general/sort/avgRebounds/dir/desc'
+        # URL2 = 'https://www.espn.com/nba/stats/player/_/table/general/sort/avgRebounds/dir/desc'
         r = requests.get(url = URL2)
         soup = bs(r.text, "html.parser")
         soup.prettify()
@@ -108,6 +108,15 @@ class DataScraper():
         stats.insert(0, self.team.pop(0))
         stats.insert(0, self.names.pop(0))
         self.df.loc[len(self.df)] = stats
+
+    def get_url(self):
+        offensiveLeaders = "https://www.espn.com/nba/stats/player"
+        defensiveLeaders = 'https://www.espn.com/nba/stats/player/_/table/general/sort/avgRebounds/dir/desc'
+        assists = 'https://www.espn.com/nba/stats/player/_/table/offensive/sort/avgAssists/dir/desc'
+        blocks = 'https://www.espn.com/nba/stats/player/_/table/defensive/sort/avgBlocks/dir/desc'
+        threePointersMade = 'https://www.espn.com/nba/stats/player/_/table/offensive/sort/avgThreePointFieldGoalsMade/dir/desc'
+        steals = 'https://www.espn.com/nba/stats/player/_/table/defensive/sort/avgSteals/dir/desc'
+
     
 if __name__ == "__main__":
     object = DataScraper()
