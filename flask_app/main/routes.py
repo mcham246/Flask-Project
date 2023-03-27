@@ -3,5 +3,5 @@ from flask import Blueprint, render_template
 main = Blueprint("main", __name__)
 
 @main.route('/')
-def hello_world():
-    return render_template('index2.html')
+def index():
+    return render_template('index.html')

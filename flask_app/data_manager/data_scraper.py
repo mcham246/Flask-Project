@@ -16,6 +16,7 @@ class DataScraper():
         # Finding the player names
         URL = "https://www.espn.com/nba/stats/player"
         # URL2 = 'https://www.espn.com/nba/stats/player/_/table/general/sort/avgRebounds/dir/desc'
+        # URL = 'https://www.espn.com/nba/team/stats/_/name/bos/boston-celtics'
         r = requests.get(url = URL)
         soup = bs(r.text, "html.parser")
         soup.prettify()
