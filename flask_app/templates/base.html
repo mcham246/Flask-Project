@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %} - FlaskApp</title>
+
     <style>
+        
         nav a {
             color: white;
             /* font-size: 3em; */
@@ -11,12 +15,14 @@
             text-decoration: none;
             line-height: 5;
             font-family: Menlo, monospace;
-
+            
         }
         body {
             background-color: #274752;
         }
+        
     </style>
+
 </head>
 
 <body>
@@ -28,5 +34,6 @@
     <div class="content">
         {% block content %} {% endblock %}
     </div>
+
 </body>
 </html>
