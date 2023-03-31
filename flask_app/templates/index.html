@@ -29,8 +29,14 @@
         th{
             color: white;
             padding: 8px;
+            border:1px solid white;
         }
-        
+        td{
+          color: white;
+          padding: 8px;
+          border: 1px solid white;
+          
+        }
 
     </style>
 
@@ -45,18 +51,17 @@
                 <th>Email</th>
               </tr>
             </thead> 
-            <!-- <tbody>
+            <tbody>
               {% for user in users %}
-              
                 <tr>
-                  <td>{{ user}}</td>
-                  <td>{{ user }}</td>
+                  <td>{{ user.name}}</td>
+                  <td>{{ user.age }}</td>
                   <td>{{ user.address }}</td>
                   <td>{{ user.phone }}</td>
                   <td>{{ user.email }}</td>
                 </tr>
               {% endfor %}
-            </tbody>  -->
+            </tbody> 
         </table>
     </div> 
 </html>

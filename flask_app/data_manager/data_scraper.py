@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 
-
 class DataScraper():
     def __init__(self):
         self.names = []
@@ -69,7 +68,7 @@ class DataScraper():
     
     def getOffensiveLeadersStats(self):
         self.setOffensiveLeadersStats()
-        print(self.df)
+        # print(self.df)
         return self.df
 
     # Save the dataframe to a csv file
