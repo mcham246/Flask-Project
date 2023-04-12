@@ -1,5 +1,5 @@
 from . import db
-from .model import User
+from .model import User, Test
 
 class Database:
     
@@ -46,3 +46,11 @@ class Database:
 
         # db.session.commit()
         # User.query.delete()
+
+    def sample2(self):
+        test = Test(
+            id = 8888888888,
+            name = 'Test'
+        )
+
+        db.session.add(test)
