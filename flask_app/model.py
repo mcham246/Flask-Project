@@ -15,6 +15,24 @@ class Test(db.Model):
     name = db.Column(db.String(64), index=True)
 
 
+class Team(db.Model):
+    __tablename__='Teams'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True)
+    pos = db.Column(db.String(64), index=True)
+    gp = db.Column(db.String(64), index=True)
+    gs = db.Column(db.String(64), index=True)
+    min = db.Column(db.String(64), index=True)
+    pts = db.Column(db.String(64), index=True)
+    Or = db.Column(db.String(64), index=True)
+    dr = db.Column(db.String(64), index=True)
+    reb = db.Column(db.String(64), index=True)
+    ast = db.Column(db.String(64), index=True)
+    stl = db.Column(db.String(64), index=True)
+    blk = db.Column(db.String(64), index=True)
+    to = db.Column(db.String(64), index=True)
+    pf = db.Column(db.String(64), index=True)
+    ast_to = db.Column(db.String(64), index=True)
 
 
 

@@ -1,5 +1,6 @@
 from . import db
-from .model import User, Test
+from .model import User, Test, Team
+from .data_manager.data_manager_teams import TeamsDataScraper
 
 class Database:
     
@@ -54,3 +55,27 @@ class Database:
         )
 
         db.session.add(test)
+
+    def query_team(self, team):
+        object = TeamsDataScraper()
+        df = object.scrape(object.allTeams[team])
+        for i in range(0, len(df)-1):
+            player = Team(
+                id = i,
+                name = df['PLAYER'][i],
+                pos = df['POS'][i],
+                gp = df['GP'][i],
+                gs = df['GS'][i],
+                min = df['MIN'][i],
+                pts = df['PTS'][i],
+                Or = df['OR'][i],
+                dr = df['DR'][i],
+                reb = df['REB'][i],
+                ast = df['AST'][i],
+                stl = df['STL'][i],
+                blk = df['BLK'][i],
+                to = df['TO'][i],
+                pf = df['PF'][i],
+                ast_to = df['AST/TO'][i]
+            )
+            db.session.add(player)

@@ -50,7 +50,7 @@
     <tbody>
       {% for teams in atlantic %}
         <tr>
-          <td><a class="ele" href="#">{{ teams }}</a></td>
+          <td><a class="ele" href="{{ url_for('main.team_detail', team=teams) }}">{{ teams }}</a></td>
         </tr>
       {% endfor %}
     </tbody>
@@ -65,7 +65,7 @@
     <tbody>
       {% for teams in pacific %}
         <tr>
-          <td><a class="ele" href="#">{{ teams }}</a></td>
+          <td><a class="ele" href="{{ url_for('main.team_detail', team=teams) }}">{{ teams }}</a></td>
         </tr>
       {% endfor %}
     </tbody>
@@ -80,7 +80,7 @@
     <tbody>
       {% for teams in central %}
         <tr>
-          <td><a class="ele" href="#">{{ teams }}</a></td>
+          <td><a class="ele" href="{{ url_for('main.team_detail', team=teams) }}">{{ teams }}</a></td>
         </tr>
       {% endfor %}
     </tbody>
@@ -95,7 +95,7 @@
     <tbody>
       {% for teams in southeast %}
         <tr>
-          <td><a class="ele" href="#">{{ teams }}</a></td>
+          <td><a class="ele" href="{{ url_for('main.team_detail', team=teams) }}">{{ teams }}</a></td>
         </tr>
       {% endfor %}
     </tbody>
@@ -110,7 +110,7 @@
     <tbody>
       {% for teams in northwest %}
         <tr>
-          <td><a class="ele" href="#">{{ teams }}</a></td>
+          <td><a class="ele" href="{{ url_for('main.team_detail', team=teams) }}">{{ teams }}</a></td>
         </tr>
       {% endfor %}
     </tbody>
@@ -125,7 +125,7 @@
     <tbody>
       {% for teams in southwest %}
         <tr>
-          <td><a class="ele" href="#">{{ teams }}</a></td>
+          <td><a class="ele" href="{{ url_for('main.team_detail', team=teams) }}">{{ teams }}</a></td>
         </tr>
       {% endfor %}
     </tbody>

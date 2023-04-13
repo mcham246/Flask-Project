@@ -1,0 +1,75 @@
+{% extends "base_alt.html" %}
+
+{% block content %}
+    <style>
+        th{
+            color: antiquewhite;
+            font-family: Menlo, monospace;
+        }
+        td{
+            color: antiquewhite
+            
+        }
+        tr{
+            background-color: #09495e;
+            font-family: Menlo, monospace;
+        }
+    </style>
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>POS</th>
+        <th>GP</th>
+        <th>GS</th>
+        <th>MIN</th>
+        <th>PTS</th>
+        <th>OR</th>
+        <th>DR</th>
+        <th>REB</th>
+        <th>AST</th>
+        <th>STL</th>
+        <th>BLK</th>
+        <th>TO</th>
+        <th>PF</th>
+        <th>AST/TO</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for players in team %}
+        <tr>
+          <td>{{ players.name }}</td>
+          <td>{{ players.pos }}</td>
+          <td>{{ players.gp }}</td>
+          <td>{{ players.gs }}</td>
+          <td>{{ players.min }}</td>
+          <td>{{ players.pts }}</td>
+          <td>{{ players.Or }}</td>
+          <td>{{ players.dr }}</td>
+          <td>{{ players.reb }}</td>
+          <td>{{ players.ast }}</td>
+          <td>{{ players.stl }}</td>
+          <td>{{ players.blk }}</td>
+          <td>{{ players.to }}</td>
+          <td>{{ players.pf }}</td>
+          <td>{{ players.ast_to }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <!-- <script class="script">
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          null,
+          {searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          null],
+      });
+    });
+  </script> -->
+{% endblock %}

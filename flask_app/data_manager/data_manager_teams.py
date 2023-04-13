@@ -53,6 +53,40 @@ class TeamsDataScraper:
             'San Antonio Spurs': 'https://www.espn.com/nba/team/stats/_/name/sa/san-antonio-spurs'
         }
 
+        self.allTeams = {
+            'Boston Celtics': 'https://www.espn.com/nba/team/stats/_/name/bos/boston-celtics',
+            'Brooklyn Nets': 'https://www.espn.com/nba/team/stats/_/name/bkn/brooklyn-nets',
+            'New York Knicks': 'https://www.espn.com/nba/team/stats/_/name/ny/new-york-knicks',
+            'Philadelphia 76ers': 'https://www.espn.com/nba/team/stats/_/name/phi/philadelphia-76ers',
+            'Toronto Raptors': 'https://www.espn.com/nba/team/stats/_/name/tor/toronto-raptors',
+            'Golden State Warriors': 'https://www.espn.com/nba/team/stats/_/name/gs/golden-state-warriors',
+            'LA Clippers': 'https://www.espn.com/nba/team/stats/_/name/lac/la-clippers',
+            'Los Angeles Lakers': 'https://www.espn.com/nba/team/stats/_/name/lal/los-angeles-lakers',
+            'Phoenix Suns': 'https://www.espn.com/nba/team/stats/_/name/phx/phoenix-suns',
+            'Sacramento Kings': 'https://www.espn.com/nba/team/stats/_/name/sac/sacramento-kings',
+            'Chicago Bulls': 'https://www.espn.com/nba/team/stats/_/name/chi/chicago-bulls',
+            'Cleveland Cavaliers': 'https://www.espn.com/nba/team/stats/_/name/cle/cleveland-cavaliers',
+            'Detroit Pistons': 'https://www.espn.com/nba/team/stats/_/name/det/detroit-pistons',
+            'Indiana Pacers': 'https://www.espn.com/nba/team/stats/_/name/ind/indiana-pacers',
+            'Milwaukee Bucks': 'https://www.espn.com/nba/team/stats/_/name/mil/milwaukee-bucks',
+            'Atlanta Hawks': 'https://www.espn.com/nba/team/stats/_/name/atl/atlanta-hawks',
+            'Charlotte Hornets': 'https://www.espn.com/nba/team/stats/_/name/cha/charlotte-hornets',
+            'Miami Heat': 'https://www.espn.com/nba/team/stats/_/name/mia/miami-heat',
+            'Orlando Magic': 'https://www.espn.com/nba/team/stats/_/name/orl/orlando-magic',
+            'Washington Wizards': 'https://www.espn.com/nba/team/stats/_/name/wsh/washington-wizards',
+            'Denver Nuggets': 'https://www.espn.com/nba/team/stats/_/name/den/denver-nuggets',
+            'Minnesota Timberwolves': 'https://www.espn.com/nba/team/stats/_/name/min/minnesota-timberwolves',
+            'Oklahoma City Thunder': 'https://www.espn.com/nba/team/stats/_/name/okc/oklahoma-city-thunder',
+            'Portland Trail Blazers': 'https://www.espn.com/nba/team/stats/_/name/por/portland-trail-blazers',
+            'Utah Jazz': 'https://www.espn.com/nba/team/stats/_/name/utah/utah-jazz',
+            'Dallas Mavericks': 'https://www.espn.com/nba/team/stats/_/name/dal/dallas-mavericks',
+            'Houston Rockets': 'https://www.espn.com/nba/team/stats/_/name/hou/houston-rockets',
+            'Memphis Grizzlies': 'https://www.espn.com/nba/team/stats/_/name/mem/memphis-grizzlies',
+            'New Orleans Pelicans': 'https://www.espn.com/nba/team/stats/_/name/no/new-orleans-pelicans',
+            'San Antonio Spurs': 'https://www.espn.com/nba/team/stats/_/name/sa/san-antonio-spurs'
+            
+        }
+
     def scrape(self, espnurl):
         # request configurations
         r = requests.get(url = espnurl)
